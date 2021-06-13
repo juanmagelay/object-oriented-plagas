@@ -3,6 +3,11 @@ class Plaga {
 	var property nivelDeDanio = 0
 	
 	method enfermedades() {	return poblacion >= 10 }
+	
+	method ataque(unElemento) {
+		poblacion = poblacion * 1.1
+		unElemento.efectoPlaga(self)
+	}
 }
 
 class Cucaracha inherits Plaga {
@@ -13,6 +18,10 @@ class Cucaracha inherits Plaga {
 	override method enfermedades() {
 		return
 			super() and (self.pesoPromedio() >= 10)
+	}
+	override method ataque(unElemento) {
+		super(unElemento)
+		pesoPromedio = pesoPromedio + 2
 	}
 }
 
@@ -32,5 +41,7 @@ class Pulga inherits Plaga {
 }
 
 class Garrapata inherits Pulga {
-	
+	override method ataque(unElemento) {
+		poblacion = poblacion * 1.2
+	}
 }

@@ -1,5 +1,7 @@
 import plagas.*
+import elementos.*
 
+//Plagas
 test "Plaga" {
 	var p1 = new Plaga(poblacion = 11, nivelDeDanio = 0)
 	assert.that(p1.enfermedades())
@@ -29,4 +31,33 @@ test "Garrapata" {
 	assert.equals(g1.nivelDeDanio(), 60)
 	assert.that(g1.enfermedades())
 	//Porque tiene poblacion >= 10
+}
+
+//Ataque
+test "Plaga2" {
+	var p2 = new Plaga(poblacion = 10)
+	p2.ataque(new Mascota(nivelDeSalud = 200))
+	assert.equals(p2.poblacion(), 11)
+}
+
+test "Cucaracha2" {
+	var c2 = new Cucaracha(poblacion = 10, pesoPromedio = 8)
+	c2.ataque(new Mascota(nivelDeSalud = 200))
+	assert.equals(c2.poblacion(), 11)
+	assert.equals(c2.pesoPromedio(), 10)
+}
+
+test "Garrapata2" {
+	var g2 = new Garrapata(poblacion = 10)
+	g2.ataque(new Mascota(nivelDeSalud = 200))
+	assert.equals(g2.poblacion(), 12)
+}
+
+test "ElementoAtacado" {
+	var m3 = new Mosquito(poblacion = 30)
+	//Enfermedades true, nivelDeDanio = 30
+	var ma1 = new Mascota(nivelDeSalud = 200)
+	m3.ataque(ma1)
+	//nivelDeDanio = 33
+	assert.equals(ma1.nivelDeSalud(), 167)
 }
