@@ -10,3 +10,23 @@ test "Cucaracha" {
 	assert.notThat(c1.enfermedades())
 	//Porque tiene poblacion >= 10 pero peso < 10
 }
+
+test "Mosquito" {
+	var m1 = new Mosquito(poblacion = 30)
+	assert.that(m1.enfermedades())
+	//Porque tiene poblacion >= 10 y es multiplo de 3
+}
+
+test "Pulgas" {
+	var pu1 = new Pulga(poblacion = 30)
+	assert.equals(pu1.nivelDeDanio(), 60)
+	assert.that(pu1.enfermedades())
+	//Porque tiene poblacion >= 10
+}
+
+test "Garrapata" {
+	var g1 = new Garrapata(poblacion = 30)
+	assert.equals(g1.nivelDeDanio(), 60)
+	assert.that(g1.enfermedades())
+	//Porque tiene poblacion >= 10
+}
