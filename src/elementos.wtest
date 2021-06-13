@@ -1,5 +1,7 @@
 import elementos.*
+import plagas.*
 
+//Elementos
 test "Hogar" {
 	const e1 = new Elemento()
 	assert.notThat(e1.esBueno())
@@ -24,3 +26,26 @@ test "Barrio" {
 	//bueno, malo, bueno
 	assert.that(b1.esCopado())
 }
+
+//Plagas sobre elementos
+test "Hogar2" {	
+	const ho2 = new Hogar(confort = 2)
+	ho2.efectoPlaga(new Pulga(poblacion = 30))
+	//Nivel de danio = 60
+	assert.equals(ho2.nivelDeMugre(), 60)
+}
+
+test "Huerta2" {
+	const hu2 = new Huerta(prodEnKg = 20)
+	hu2.efectoPlaga(new Pulga(poblacion = 30))
+	//Nivel de danio = 60, enfermedades true
+	assert.equals(hu2.prodEnKg(), 4) //20 - 6 - 10
+}
+
+test "Mascota2" {
+	const m2 = new Mascota(nivelDeSalud = 200)
+	m2.efectoPlaga(new Pulga(poblacion = 30))
+	//Nivel de danio = 60, enfermedades true
+	assert.equals(m2.nivelDeSalud(), 140) //200 - 60
+}
+

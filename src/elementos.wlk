@@ -1,3 +1,5 @@
+import plagas.*
+
 class Barrio {
 	var elementos = []
 	method elementos() { return elementos }
@@ -31,6 +33,10 @@ class Hogar inherits Elemento {
 	override method esBueno() {
 		return nivelDeMugre <= (confort / 2)
 	}
+	
+	method efectoPlaga(unaPlaga) {
+		nivelDeMugre = nivelDeMugre + unaPlaga.nivelDeDanio()
+	}
 }
 
 class Huerta inherits Elemento {
@@ -40,6 +46,10 @@ class Huerta inherits Elemento {
 	override method esBueno() {
 		return prodEnKg > nivel
 	}
+	method efectoPlaga(unaPlaga) {
+		prodEnKg = prodEnKg - unaPlaga.nivelDeDanio() * 0.1 -
+		if (unaPlaga.enfermedades()) { 10 } else { 0 }
+	}
 }
 
 class Mascota inherits Elemento {
@@ -47,6 +57,11 @@ class Mascota inherits Elemento {
 	
 	override method esBueno() {
 		return nivelDeSalud > 250
+	}
+	method efectoPlaga(unaPlaga) {
+		if (unaPlaga.enfermedades()) { 
+			nivelDeSalud = nivelDeSalud - unaPlaga.nivelDeDanio()
+		}
 	}
 }
 
