@@ -1,6 +1,12 @@
+import plagas.*
 
-test "testX" {
+test "Plaga" {
+	var p1 = new Plaga(poblacion = 11, nivelDeDanio = 0)
+	assert.that(p1.enfermedades())
+}
 
-	assert.that(true)
-
+test "Cucaracha" {
+	var c1 = new Cucaracha(poblacion = 30, nivelDeDanio = 0, pesoPromedio = 8)
+	assert.notThat(c1.enfermedades())
+	//Porque tiene poblacion >= 10 pero peso < 10
 }

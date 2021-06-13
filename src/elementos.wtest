@@ -1,6 +1,26 @@
+import elementos.*
 
-test "testX" {
+test "Hogar" {
+	const e1 = new Elemento()
+	assert.notThat(e1.esBueno())
+	
+	const ho1 = new Hogar(nivelDeMugre = 1, confort = 2)
+	assert.that(ho1.esBueno())
+}
 
-	assert.that(true)
+test "Huerta" {
+	const hu1 = new Huerta(prodEnKg = 2, nivel = 1)
+	assert.that(hu1.esBueno())
+}
 
+test "Mascota" {
+	const m1 = new Mascota(nivelDeSalud = 251)
+	assert.that(m1.esBueno())
+}
+
+test "Barrio" {
+	const b1 = new Barrio(elementos = [])
+    b1.agregarElementos([new Hogar(nivelDeMugre = 1, confort = 2), new Hogar(nivelDeMugre = 2, confort = 2), new Huerta(prodEnKg = 2, nivel = 1)])
+	//bueno, malo, bueno
+	assert.that(b1.esCopado())
 }
